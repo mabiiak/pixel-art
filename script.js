@@ -2,7 +2,7 @@ const size = 5;
 // primeiro for para criar a localização da linha e a linha
 for (let index = 0; index < size; index += 1) {
   // onde a linha vai ser criada
-  const divQuadrado = document.querySelector('div');
+  const divQuadrado = document.querySelector('section');
   // a linha será uma div nova
   const armazemLinha = document.createElement('div');
   divQuadrado.appendChild(armazemLinha);
