@@ -1,20 +1,41 @@
-const size = 5;
-// primeiro for para criar a localização da linha e a linha
-for (let index = 0; index < size; index += 1) {
-  // onde a linha vai ser criada
-  const divQuadrado = document.querySelector('section');
-  // a linha será uma div nova
-  const armazemLinha = document.createElement('div');
-  divQuadrado.appendChild(armazemLinha);
-  divQuadrado.className = 'line';
-  // referencia https://stackoverflow.com/questions/49831591/i-want-to-create-idname-property-like-classname-in-javascript
-  if (this.divQuadrado !== 'undefined') {
-    this.id = 'pixel-board';
-  }
-  // segundo for para criar os caracteres da linha
-  for (let i = 0; i < size; i += 1) {
-    const pixel = document.createElement('div');
-    pixel.className = 'pixel';
-    divQuadrado.appendChild(pixel);
+function painel(n) {
+  const size = n;
+  // primeiro for para criar a div linha dentro da section
+  for (let index = 0; index < size; index += 1) {
+    const divQuadrado = document.querySelector('section');
+    const armazemLinha = document.createElement('div');
+    divQuadrado.appendChild(armazemLinha);
+    divQuadrado.className = 'line';
+    // segundo for para criar a div pixel dentro da div linha
+    for (let i = 0; i < size; i += 1) {
+      const pixel = document.createElement('div');
+      pixel.className = 'pixel';
+      divQuadrado.appendChild(pixel);
+    }
   }
 }
+
+painel(5);
+
+/* ao carregar a pagina
+WINDOM ONLOAD = cor preta selecionada para pintar os pixls
+
+black = className selectd
+*/
+
+// window.onload = initialColor();
+
+// function initialColor(color) {
+//   //procurar primeira cor de collor-palette
+//   const whoIsFirst = document.getElementsByClassName('color-palette');
+//   for (let index = 0; index < whoIsFirst; index += 1) {
+//     if (whoIsFirst/*id*/[index] === color) {
+//       //add nova classe selected
+//     }
+//   }
+
+//   //se black for a entrada da função acrescentar a class selected
+//   if (color === whoIsFirst.className) {
+
+//   }
+// }
