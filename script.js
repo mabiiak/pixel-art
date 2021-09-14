@@ -21,7 +21,7 @@ function colorBg() {
   for (let i = 0; i < itemColor.length; i += 1) {
     if (itemColor[i] === itemColor[0]) {
       itemColor[i].style.backgroundColor = 'black';
-      itemColor[i].classList.add = 'selected';
+      itemColor[0].className = 'color selected';
     } else if (itemColor[i] === itemColor[1]) {
       itemColor[i].style.backgroundColor = 'rgb(111, 205, 242)';
     } else if (itemColor[i] === itemColor[2]) {
@@ -47,15 +47,13 @@ function palette() {
 
 window.onload = palette;
 
-/* REQUISITO 4 -
+/* REQUISITO 4, 5 -
   Criar a div linha dentro da section
     > for cria as linhas com base em size que vale o valor atribuido a função
-    > cria class line para formatação 
-  
+    > cria class line para formatação
   Cria pixel
     > segundo for percorre a line criando pixel com base no valor de size
     > acrescenta classe pixel
-
 
 */
 function painel(n) {
@@ -77,46 +75,57 @@ function painel(n) {
 
 painel(5);
 
-/* REQUISiTO 6 SEM GAMBIARRA
+/* REQUISiTO 7 SEM GAMBIARRA
 
-ao carregar a pagina
-WINDOM ONLOAD = cor preta selecionada para pintar os pixls
+  Inicialemente, ao carregar a pagina a cor selecionada é black
+    > os pixels podem ser pintados de preto
+    > função que copia o valor de uma classe para outra?
+    > evento click que faz o elemento clicado passar a ter uma classe?
 
-black = className selectd
+  Cliquei em uma cor da paleta
+    > percorrer a lista da classe color com um for
+    > adicionar um evento click (pesquisar sobre event.target)
 
-window.onload = initialColor();
+  A cor foi selecionada
+    > dentro do for, se for aquela cor ela passa a ter a classe selected
+    > nenhuma outra cor terá essa classe
+  Essa cor preencherá os pixels
+    > selected copia seus atributos? sua Bg-cor?
+    > selected tem que mudar o background-color para o mesmo style definido na função bgColor
+    > eu consigo reutilizar bgColor?
+*/
 
-function initialColor(color) {
-  //procurar primeira cor de collor-palette
-  const whoIsFirst = document.getElementsByClassName('color-palette');
-  for (let index = 0; index < whoIsFirst; index += 1) {
-    if (whoIsFirst[index] === color) {
-      //add nova classe selected
-    }
+function removeClass() {
+  const itemColore = document.getElementsByClassName('color');
+  for (let i = 0; i < itemColore.length; i += 1) {
+    itemColore[i].classList.remove('selected');
   }
+}
 
-  se black for a entrada da função acrescentar a class selected
-   if (color === whoIsFirst.className) {
+// function addClass() {
+//   const itemColore = document.querySelectorAll('#color-palette');
 
-   }
- }
-*/
+//   for (let i = 0; i < itemColore.length; i += 1) {
+//     itemColore[i].addEventListener('click',function(event) {
+//       // console.log(itemColore[i],event.target);
+//      itemColore[i]event.target.classList.add('selected');
+//     })
+//   }
+// }
 
-/* REQUISITO 7
-cliquei em uma cor da paleta
- > event listen click in palette-color
+function removeAndAdd() {
+  removeClass();
+  // addClass();
+}
 
-cor selecionada
- > percorrer itens d palette-color (for) checando em qual o evento ocorreu
- > o que ocorreu deve receber a classe 'selected'
- > os que não receberam perdem a classe 'selected'
+addEventListener('click', removeAndAdd);
 
- > selected tem que mudar o background-color para o mesmo do intem selecionado selected = color
+/* REQUISITO 8
 
-cliquei no gride
- > event listen click in quadrado pixel
+  cliquei no gride
+    > event listen click in quadrado pixel
 
-pintei o pixel clicado
- > percorrer o quadradro/grid checando onde ocorreu o evento
- > o que ocorreu vai ter aquela cor que esta selecionada (class selected)
-*/
+  pintei o pixel clicado
+    > percorrer o quadradro/grid checando onde ocorreu o evento
+    > o que ocorreu vai ter aquela cor que esta selecionada (class selected)
+  */
