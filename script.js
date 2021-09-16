@@ -23,18 +23,20 @@ function colorBg() {
       itemColor[i].style.backgroundColor = 'black';
       itemColor[0].className = 'color selected';
     } else if (itemColor[i] === itemColor[1]) {
-      itemColor[i].style.backgroundColor = 'rgb(111, 205, 242)';
+      itemColor[i].style.backgroundColor = 'rgb(111, 205, 242)'; // azul
     } else if (itemColor[i] === itemColor[2]) {
-      itemColor[i].style.backgroundColor = 'rgb(255, 242, 131)';
+      itemColor[i].style.backgroundColor = 'rgb(153, 255, 102)'; // verde
+    } else if (itemColor[i] === itemColor[3]) {
+      itemColor[i].style.backgroundColor = 'rgb(255, 242, 131)'; // amarelo
     } else {
-      itemColor[i].style.backgroundColor = 'red';
+      itemColor[i].style.backgroundColor = 'pink';
     }
   }
 }
 
 function palette() {
   const localPalette = document.querySelector('div');
-  const numberColor = 4;
+  const numberColor = 5;
 
   for (let i = 0; i < numberColor; i += 1) {
     const newColor = document.createElement('div');
@@ -85,7 +87,6 @@ painel(5);
   A cor foi selecionada
     > o event ela passa a ter a classe selected
 */
-
 function removeClass() {
   const itemColore = document.getElementsByClassName('color');
   for (let i = 0; i < itemColore.length; i += 1) {
@@ -98,18 +99,18 @@ const itemColore = document.querySelector('div');
 function mudarClasse(event) {
   removeClass();
   event.target.classList.add('selected');
-  console.log(itemColore);
   console.log(event.target);
 }
 
 itemColore.addEventListener('click', mudarClasse);
 
 /* REQUISITO 8
+  pesquisa sobre getComputedStyle:
+    https://pt.stackoverflow.com/questions/406992/como-pegar-o-style-de-um-elemento-dentro-de-uma-div
 
    Inicialemente, ao carregar a pagina a cor selecionada é black
-    > os pixels podem ser pintados de preto
-    > função que copia o valor de uma classe para outra?
-    > evento click que faz o elemento clicado passar a ter uma classe?
+    > os pixels devem ser pintados de preto
+    > função que copia o style para uma classe?
 
   cliquei no gride
     > event listen click in quadrado pixel
@@ -123,3 +124,40 @@ itemColore.addEventListener('click', mudarClasse);
     > selected tem que mudar o background-color para o mesmo style definido na função bgColor
     > eu consigo reutilizar bgColor?
   */
+let lugarboard = document.getElementById('pixel-board');
+let lugar = document.getElementsByClassName('pixel');
+// puxar por classe, for para percorrer os 25px do grid
+
+// function paint(event){
+//   event.target.style.backgroundColor = /*getComputedStyle(event.target).backgroundColor;*/ 'pink'
+// }
+let colooooor = 'black';
+
+function qualaCor(event){
+  let rgbColor = getComputedStyle(event.target).backgroundColor;
+  console.log(rgbColor);
+  colooooor = rgbColor;
+  // return rgbColor;
+}
+
+itemColore.addEventListener('click',qualaCor);
+
+lugarboard.addEventListener('click', (event) => {
+  // qualaCor(event);
+  for (let i = 0; i < lugar.length ; i += 1){
+    if (event.target.nodeName === 'DIV') {
+      event.target.style.backgroundColor = /** getComputedStyle(event.target).backgroundColor; 'black'; */ colooooor;
+    }
+  }
+})
+
+
+
+  
+
+
+
+
+
+
+
