@@ -75,24 +75,15 @@ function painel(n) {
 
 painel(5);
 
-/* REQUISiTO 7 SEM GAMBIARRA
-
-  Inicialemente, ao carregar a pagina a cor selecionada é black
-    > os pixels podem ser pintados de preto
-    > função que copia o valor de uma classe para outra?
-    > evento click que faz o elemento clicado passar a ter uma classe?
-
+/* REQUISiTO 7 - Exercicio feito com o auxilio do Joel via slack
   Cliquei em uma cor da paleta
-    > percorrer a lista da classe color com um for
-    > adicionar um evento click (pesquisar sobre event.target)
+    > adicionar um evento click
+    > remove a classe selected de outros elementos
+      funcão removeclass
+      percorre todos os itens do array
 
   A cor foi selecionada
-    > dentro do for, se for aquela cor ela passa a ter a classe selected
-    > nenhuma outra cor terá essa classe
-  Essa cor preencherá os pixels
-    > selected copia seus atributos? sua Bg-cor?
-    > selected tem que mudar o background-color para o mesmo style definido na função bgColor
-    > eu consigo reutilizar bgColor?
+    > o event ela passa a ter a classe selected
 */
 
 function removeClass() {
@@ -102,25 +93,23 @@ function removeClass() {
   }
 }
 
-// function addClass() {
-//   const itemColore = document.querySelectorAll('#color-palette');
+const itemColore = document.querySelector('div');
 
-//   for (let i = 0; i < itemColore.length; i += 1) {
-//     itemColore[i].addEventListener('click',function(event) {
-//       // console.log(itemColore[i],event.target);
-//      itemColore[i]event.target.classList.add('selected');
-//     })
-//   }
-// }
-
-function removeAndAdd() {
+function mudarClasse(event) {
   removeClass();
-  // addClass();
+  event.target.classList.add('selected');
+  console.log(itemColore);
+  console.log(event.target);
 }
 
-addEventListener('click', removeAndAdd);
+itemColore.addEventListener('click', mudarClasse);
 
 /* REQUISITO 8
+
+   Inicialemente, ao carregar a pagina a cor selecionada é black
+    > os pixels podem ser pintados de preto
+    > função que copia o valor de uma classe para outra?
+    > evento click que faz o elemento clicado passar a ter uma classe?
 
   cliquei no gride
     > event listen click in quadrado pixel
@@ -128,4 +117,9 @@ addEventListener('click', removeAndAdd);
   pintei o pixel clicado
     > percorrer o quadradro/grid checando onde ocorreu o evento
     > o que ocorreu vai ter aquela cor que esta selecionada (class selected)
+
+  Essa cor preencherá os pixels
+    > selected copia seus atributos? sua Bg-cor?
+    > selected tem que mudar o background-color para o mesmo style definido na função bgColor
+    > eu consigo reutilizar bgColor?
   */
