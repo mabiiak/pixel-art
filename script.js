@@ -23,11 +23,9 @@ function colorBg() {
       itemColor[i].style.backgroundColor = 'black';
       itemColor[0].className = 'color selected';
     } else if (itemColor[i] === itemColor[1]) {
-      itemColor[i].style.backgroundColor = 'rgb(111, 205, 242)'; // azul
+      itemColor[i].style.backgroundColor = 'rgb(111, 205, 242)';
     } else if (itemColor[i] === itemColor[2]) {
-      itemColor[i].style.backgroundColor = 'rgb(153, 255, 102)'; // verde
-    } else if (itemColor[i] === itemColor[3]) {
-      itemColor[i].style.backgroundColor = 'rgb(255, 242, 131)'; // amarelo
+      itemColor[i].style.backgroundColor = 'rgb(255, 242, 131)';
     } else {
       itemColor[i].style.backgroundColor = 'pink';
     }
@@ -36,7 +34,7 @@ function colorBg() {
 
 function palette() {
   const localPalette = document.querySelector('div');
-  const numberColor = 5;
+  const numberColor = 4;
 
   for (let i = 0; i < numberColor; i += 1) {
     const newColor = document.createElement('div');
@@ -124,8 +122,8 @@ itemColore.addEventListener('click', mudarClasse);
     > selected tem que mudar o background-color para o mesmo style definido na função bgColor
     > eu consigo reutilizar bgColor?
   */
-let lugarboard = document.getElementById('pixel-board');
-let lugar = document.getElementsByClassName('pixel');
+const lugarboard = document.getElementById('pixel-board');
+const lugar = document.getElementsByClassName('pixel');
 // puxar por classe, for para percorrer os 25px do grid
 
 // function paint(event){
@@ -133,31 +131,17 @@ let lugar = document.getElementsByClassName('pixel');
 // }
 let colooooor = 'black';
 
-function qualaCor(event){
-  let rgbColor = getComputedStyle(event.target).backgroundColor;
-  console.log(rgbColor);
+function qualaCor(event) {
+  const rgbColor = getComputedStyle(event.target).backgroundColor;
   colooooor = rgbColor;
-  // return rgbColor;
 }
 
-itemColore.addEventListener('click',qualaCor);
+itemColore.addEventListener('click', qualaCor);
 
 lugarboard.addEventListener('click', (event) => {
-  // qualaCor(event);
-  for (let i = 0; i < lugar.length ; i += 1){
+  for (let i = 0; i < lugar.length; i += 1) {
     if (event.target.nodeName === 'DIV') {
-      event.target.style.backgroundColor = /** getComputedStyle(event.target).backgroundColor; 'black'; */ colooooor;
+      event.target.style.backgroundColor = colooooor;
     }
   }
-})
-
-
-
-  
-
-
-
-
-
-
-
+});

@@ -7,24 +7,36 @@ h2 {
   text-align: center;
 }
 
+
 #color-palette {
   text-align: center;
+  display: inline;
+  margin-left: 26%;
+}
+
+#box {
   display: block;
-  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border: black 1px solid;
+  width: 400px;
+  height: 530px;
+  background-color: rgb(149, 117, 90);
 }
 
 .color {
   display: inline-block;
   margin: 0.5px;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border: solid black 1px;
 }
 
 #pixel-board {
-  text-align: center;
+  margin-top: 30px;
   display: block;
-  font-size: 0px;
+  font-size: 0;
 }
 
 .pixel {
@@ -41,7 +53,3 @@ h2 {
   text-align: center;
   margin: 1px;
 }
-
- .selected {
-
-} 
