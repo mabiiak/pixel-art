@@ -207,11 +207,6 @@ lugarboard.addEventListener('click', (event) => {
   }
 });
 
-itemColore.addEventListener('click', (event) => {
-  
-  getComputedStyle(body).backgroundColor = event;
-})
-
 // REQUISITO 9
 
 const chamaPixel = document.querySelectorAll('.pixel');
