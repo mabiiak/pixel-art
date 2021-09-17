@@ -47,7 +47,7 @@ function palette() {
 
 window.onload = palette;
 
-/* REQUISITO 4, 5 -
+/* REQUISITO 4, 5, 10 - 10 Feito com auxilio da Ju Barcelos e Fumagalli
   Criar a div linha dentro da section
     > for cria as linhas com base em size que vale o valor atribuido a função
     > cria class line para formatação
@@ -55,7 +55,46 @@ window.onload = palette;
     > segundo for percorre a line criando pixel com base no valor de size
     > acrescenta classe pixel
 
+
+
+  REQUISITO 10 
+
+  Crie um input e um botão que permitam definir um quadro de pixels com tamanho entre 5 e 50. Ao clicar no botão, deve ser gerado um quadro de N pixels de largura e N pixels de altura, onde N é o número inserido no input;
+
+  O input deve ter o id denominado board-size e o botão deve ter o id denominado generate-board;
+
+  O input só deve aceitar número maiores que zero. Essa restrição deve ser feita usando os atributos do elemento input;
+
+  Se nenhum valor for colocado no input ao clicar no botão, mostre um alert com o texto: "Board inválido!";
+
+  O novo quadro deve ter todos os pixels preenchidos com a cor branca.
+
+  O que será verificado:
+
+  Verifica se o input só aceita número maiores que zero. Essa restrição deve ser feita usando os atributos do elemento input
+
+  Verifica se o botão contém o texto 'VQV'
+
+  Verifica se o input está posicionado entre a paleta de cores e o quadro de pixels
+
+  Verifica se o botão está posicionado ao lado do input
+
+  Verifica se nenhum valor for colocado no input ao clicar no botão, um alert é exibido com o texto: 'Board inválido!'
+
+  Verifica se ao clicar no botão com um valor preenchido, o tamanho do board muda.
+
+  Verifica se o novo quadro tem todos os pixels preenchidos com a cor branca
+
 */
+
+// funçaõ para quando o botao for clicado pegar o valor de input e tranformar numa variavel 
+
+let tamanho = 5;
+
+const tamButton = document.getElementById('generate-board');
+const inputTam = document.getElementById('board-size');
+
+
 function painel(n) {
   const size = n;
 
@@ -73,7 +112,33 @@ function painel(n) {
   }
 }
 
-painel(5);
+painel(tamanho);
+
+tamButton.addEventListener('click', () => {
+  console.log(inputTam.value);
+  checkSize();
+});
+
+let linhaReset = document.querySelector('.line');
+
+function checkSize() {
+  //tamanho incial = 5 
+linhaReset.innerHTML = ''
+  if (inputTam.value > 4 && inputTam.value < 51) {
+    // tamanho = ;
+    painel(inputTam.value); // faz o quadro
+
+  } else if (inputTam.value === '') {
+    window.alert('Board inválido!');
+    painel(5);
+
+  } else {
+    painel(5);
+  }
+}
+
+// chamar pelo genereta bord
+// resetar com innerhtml para criar com o botao
 
 /* REQUISiTO 7 - Exercicio feito com o auxilio do Joel via slack
   Cliquei em uma cor da paleta

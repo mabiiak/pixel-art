@@ -12,6 +12,10 @@ h2 {
   display: inline;
   margin-left: 26%;
 }
+#clear-board {
+  margin-left: 26%;
+  margin-top: 5px\;
+}
 
 #box {
   display: block;
@@ -19,9 +23,9 @@ h2 {
   margin-right: auto;
   margin-top: 50px;
   border: black 1px solid;
-  width: 400px;
+  width: 800px;
   height: 530px;
-  background-color: rgb(149, 117, 90);
+  background-color: rgb(153, 153, 153);
 }
 
 .color {
