@@ -102,7 +102,7 @@ function mudarClasse(event) {
 
 itemColore.addEventListener('click', mudarClasse);
 
-/* REQUISITO 8
+/* REQUISITO 8 - Feito com ajuda da Fumagalli
   pesquisa sobre getComputedStyle:
     https://pt.stackoverflow.com/questions/406992/como-pegar-o-style-de-um-elemento-dentro-de-uma-div
 
@@ -124,16 +124,12 @@ itemColore.addEventListener('click', mudarClasse);
   */
 const lugarboard = document.getElementById('pixel-board');
 const lugar = document.getElementsByClassName('pixel');
-// puxar por classe, for para percorrer os 25px do grid
 
-// function paint(event){
-//   event.target.style.backgroundColor = /*getComputedStyle(event.target).backgroundColor;*/ 'pink'
-// }
-let colooooor = 'black';
+let color = 'black';
 
 function qualaCor(event) {
   const rgbColor = getComputedStyle(event.target).backgroundColor;
-  colooooor = rgbColor;
+  color = rgbColor;
 }
 
 itemColore.addEventListener('click', qualaCor);
@@ -141,7 +137,18 @@ itemColore.addEventListener('click', qualaCor);
 lugarboard.addEventListener('click', (event) => {
   for (let i = 0; i < lugar.length; i += 1) {
     if (event.target.nodeName === 'DIV') {
-      event.target.style.backgroundColor = colooooor;
+      event.target.style.backgroundColor = color;
     }
+  }
+});
+
+// REQUISITO 9
+
+const chamaPixel = document.querySelectorAll('.pixel');
+const lugarbutton = document.querySelector('#clear-board');
+
+lugarbutton.addEventListener('click', () => {
+  for (let i = 0; i < chamaPixel.length; i += 1) {
+    chamaPixel[i].style.backgroundColor = 'white';
   }
 });
