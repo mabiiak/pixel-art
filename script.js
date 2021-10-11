@@ -19,16 +19,11 @@ function colorBg() {
   const itemColor = document.getElementsByClassName('color');
 
   for (let i = 0; i < itemColor.length; i += 1) {
-    if (itemColor[i] === itemColor[0]) {
-      itemColor[i].style.backgroundColor = 'black';
-      itemColor[0].className = 'color selected';
-    } else if (itemColor[i] === itemColor[1]) {
-      itemColor[i].style.backgroundColor = 'rgb(111, 205, 242)';
-    } else if (itemColor[i] === itemColor[2]) {
-      itemColor[i].style.backgroundColor = 'rgb(255, 242, 131)';
-    } else {
-      itemColor[i].style.backgroundColor = 'pink';
-    }
+    itemColor[0].style.backgroundColor = 'black';
+    itemColor[0].className = 'color selected';
+    itemColor[1].style.backgroundColor = 'rgb(111, 205, 242)';
+    itemColor[2].style.backgroundColor = 'rgb(255, 242, 131)';
+    itemColor[3].style.backgroundColor = 'pink';
   }
 }
 
@@ -55,9 +50,7 @@ window.onload = palette;
     > segundo for percorre a line criando pixel com base no valor de size
     > acrescenta classe pixel
 
-
-
-  REQUISITO 10 
+  REQUISITO 10
 
   Crie um input e um botão que permitam definir um quadro de pixels com tamanho entre 5 e 50. Ao clicar no botão, deve ser gerado um quadro de N pixels de largura e N pixels de altura, onde N é o número inserido no input;
 
@@ -86,14 +79,12 @@ window.onload = palette;
   Verifica se o novo quadro tem todos os pixels preenchidos com a cor branca
 
 */
+// funçaõ para quando o botao for clicado pegar o valor de input e tranformar numa variavel
 
-// funçaõ para quando o botao for clicado pegar o valor de input e tranformar numa variavel 
-
-let tamanho = 5;
+const tamanho = 5;
 
 const tamButton = document.getElementById('generate-board');
 const inputTam = document.getElementById('board-size');
-
 
 function painel(n) {
   const size = n;
@@ -114,28 +105,28 @@ function painel(n) {
 
 painel(tamanho);
 
-tamButton.addEventListener('click', () => {
-  console.log(inputTam.value);
-  checkSize();
-});
-
-let linhaReset = document.querySelector('.line');
+const linhaReset = document.querySelector('.line');
 
 function checkSize() {
-  //tamanho incial = 5 
-linhaReset.innerHTML = ''
+  // tamanho incial = 5;
+  linhaReset.innerHTML = '';
   if (inputTam.value > 4 && inputTam.value < 51) {
     // tamanho = ;
     painel(inputTam.value); // faz o quadro
-
+  } else if (inputTam.value > 50) {
+    painel(50);
   } else if (inputTam.value === '') {
     window.alert('Board inválido!');
     painel(5);
-
   } else {
     painel(5);
   }
 }
+
+tamButton.addEventListener('click', () => {
+  console.log(inputTam.value);
+  checkSize();
+});
 
 // chamar pelo genereta bord
 // resetar com innerhtml para criar com o botao
@@ -200,9 +191,10 @@ function qualaCor(event) {
 itemColore.addEventListener('click', qualaCor);
 
 lugarboard.addEventListener('click', (event) => {
+  const evento = event.target;
   for (let i = 0; i < lugar.length; i += 1) {
-    if (event.target.nodeName === 'DIV') {
-      event.target.style.backgroundColor = color;
+    if (evento.nodeName === 'DIV') {
+      evento.style.backgroundColor = color;
     }
   }
 });
