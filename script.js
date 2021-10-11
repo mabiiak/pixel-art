@@ -1,24 +1,22 @@
 // REQUISITO 2, 3, 12 -
 
 const itemColor = document.getElementsByClassName('color');
-
 function colorBg() {
-
   itemColor[0].style.backgroundColor = 'black';
   itemColor[0].className = 'color selected';
 
-  for (let i = 1 ; i < itemColor.length; i += 1) {
-    let number1 = Math.floor(Math.random() * 256 + 1);
-    let number2 = Math.floor(Math.random() * 256 + 1);
-    let number3 = Math.floor(Math.random() * 256 + 1);
+  for (let i = 1; i < itemColor.length; i += 1) {
+    const number1 = Math.floor(Math.random() * 256 + 1);
+    const number2 = Math.floor(Math.random() * 256 + 1);
+    const number3 = Math.floor(Math.random() * 256 + 1);
 
-    let cor = `rgb(${number1},${number2},${number3})`
-    itemColor[i].style.backgroundColor = cor
-    console.log(cor)
+    const cor = `rgb(${number1},${number2},${number3})`;
+    itemColor[i].style.backgroundColor = cor;
+    console.log(cor);
   }
 }
 
-window.onload = colorBg
+window.onload = colorBg;
 
 /* REQUISITO 4, 5, 10 - 10
   Feito com auxilio da Ju Barcelos e Fumagalli
@@ -80,7 +78,7 @@ tamButton.addEventListener('click', () => {
   checkSize();
 });
 
-/* REQUISiTO 7 - 
+/* REQUISiTO 7 -
   Exercicio feito com o auxilio do Joel via slack
   Cliquei em uma cor da paleta
     > adicionar um evento click
@@ -108,7 +106,7 @@ function mudarClasse(event) {
 
 itemColore.addEventListener('click', mudarClasse);
 
-/* REQUISITO 8 - 
+/* REQUISITO 8 -
   Feito com ajuda da Fumagalli
   pesquisa sobre getComputedStyle:
     https://pt.stackoverflow.com/questions/406992/como-pegar-o-style-de-um-elemento-dentro-de-uma-div
