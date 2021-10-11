@@ -1,88 +1,42 @@
-/* REQUISITO 2, 3 -
+// REQUISITO 2, 3, 12 -
 
-  Cria uma paleta de cores - function palette
-    > criar uma div - feita no html
-    > definido ID
+const itemColor = document.getElementsByClassName('color');
 
-  Cria quatro cores
-    > cria um elemento newColor div
-    > com o for faz a repetição criando dentro da linha
-    > possuem a classe color
-
-  Definir o bg das divs - colorBg
-    > O elemento [0] = black
-    > black estara selecionado
-    > com um for percorremos os itens com a classe color, testando sua posição para darmos a cor
-
-*/
 function colorBg() {
-  const itemColor = document.getElementsByClassName('color');
 
-  for (let i = 0; i < itemColor.length; i += 1) {
-    itemColor[0].style.backgroundColor = 'black';
-    itemColor[0].className = 'color selected';
-    itemColor[1].style.backgroundColor = 'rgb(111, 205, 242)';
-    itemColor[2].style.backgroundColor = 'rgb(255, 242, 131)';
-    itemColor[3].style.backgroundColor = 'pink';
+  itemColor[0].style.backgroundColor = 'black';
+  itemColor[0].className = 'color selected';
+
+  for (let i = 1 ; i < itemColor.length; i += 1) {
+    let number1 = Math.floor(Math.random() * 256 + 1);
+    let number2 = Math.floor(Math.random() * 256 + 1);
+    let number3 = Math.floor(Math.random() * 256 + 1);
+
+    let cor = `rgb(${number1},${number2},${number3})`
+    itemColor[i].style.backgroundColor = cor
+    console.log(cor)
   }
 }
 
-function palette() {
-  const localPalette = document.querySelector('div');
-  const numberColor = 4;
+window.onload = colorBg
 
-  for (let i = 0; i < numberColor; i += 1) {
-    const newColor = document.createElement('div');
-    newColor.className = 'color';
-    localPalette.appendChild(newColor);
-  }
+/* REQUISITO 4, 5, 10 - 10
+  Feito com auxilio da Ju Barcelos e Fumagalli
 
-  colorBg();
-}
-
-window.onload = palette;
-
-/* REQUISITO 4, 5, 10 - 10 Feito com auxilio da Ju Barcelos e Fumagalli
   Criar a div linha dentro da section
     > for cria as linhas com base em size que vale o valor atribuido a função
     > cria class line para formatação
   Cria pixel
     > segundo for percorre a line criando pixel com base no valor de size
     > acrescenta classe pixel
-
-  REQUISITO 10
-
-  Crie um input e um botão que permitam definir um quadro de pixels com tamanho entre 5 e 50. Ao clicar no botão, deve ser gerado um quadro de N pixels de largura e N pixels de altura, onde N é o número inserido no input;
-
-  O input deve ter o id denominado board-size e o botão deve ter o id denominado generate-board;
-
-  O input só deve aceitar número maiores que zero. Essa restrição deve ser feita usando os atributos do elemento input;
-
-  Se nenhum valor for colocado no input ao clicar no botão, mostre um alert com o texto: "Board inválido!";
-
-  O novo quadro deve ter todos os pixels preenchidos com a cor branca.
-
-  O que será verificado:
-
-  Verifica se o input só aceita número maiores que zero. Essa restrição deve ser feita usando os atributos do elemento input
-
-  Verifica se o botão contém o texto 'VQV'
-
-  Verifica se o input está posicionado entre a paleta de cores e o quadro de pixels
-
-  Verifica se o botão está posicionado ao lado do input
-
-  Verifica se nenhum valor for colocado no input ao clicar no botão, um alert é exibido com o texto: 'Board inválido!'
-
-  Verifica se ao clicar no botão com um valor preenchido, o tamanho do board muda.
-
-  Verifica se o novo quadro tem todos os pixels preenchidos com a cor branca
+  Verifica valor do imput para criar o quadro
+    > ao iniciar a função checksize reseta o valor da linha, fazendo com que o grid anterior seja apagado
+    > vunção é chamada ao clicar no botao VQV
+    > assim ja foram definidos valor min e max
 
 */
-// funçaõ para quando o botao for clicado pegar o valor de input e tranformar numa variavel
 
 const tamanho = 5;
-
 const tamButton = document.getElementById('generate-board');
 const inputTam = document.getElementById('board-size');
 
@@ -108,11 +62,9 @@ painel(tamanho);
 const linhaReset = document.querySelector('.line');
 
 function checkSize() {
-  // tamanho incial = 5;
   linhaReset.innerHTML = '';
   if (inputTam.value > 4 && inputTam.value < 51) {
-    // tamanho = ;
-    painel(inputTam.value); // faz o quadro
+    painel(inputTam.value);
   } else if (inputTam.value > 50) {
     painel(50);
   } else if (inputTam.value === '') {
@@ -128,10 +80,8 @@ tamButton.addEventListener('click', () => {
   checkSize();
 });
 
-// chamar pelo genereta bord
-// resetar com innerhtml para criar com o botao
-
-/* REQUISiTO 7 - Exercicio feito com o auxilio do Joel via slack
+/* REQUISiTO 7 - 
+  Exercicio feito com o auxilio do Joel via slack
   Cliquei em uma cor da paleta
     > adicionar um evento click
     > remove a classe selected de outros elementos
@@ -158,7 +108,8 @@ function mudarClasse(event) {
 
 itemColore.addEventListener('click', mudarClasse);
 
-/* REQUISITO 8 - Feito com ajuda da Fumagalli
+/* REQUISITO 8 - 
+  Feito com ajuda da Fumagalli
   pesquisa sobre getComputedStyle:
     https://pt.stackoverflow.com/questions/406992/como-pegar-o-style-de-um-elemento-dentro-de-uma-div
 
