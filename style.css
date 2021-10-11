@@ -54,7 +54,7 @@ input {
   margin: 1.5px;
   width: 45px;
   height: 45px;
-  border: solid rgb(218, 218, 218) 1px;
+  border: solid black 1px;
   border-radius: 10%;
 }
 
@@ -74,10 +74,10 @@ input {
 .pixel {
   width: 40px;
   height: 40px;
-  border: solid rgb(218, 218, 218) 1px;
+  border: solid black 1px;
   border-radius: 10%;
   display: inline-block;
-  margin: 0.5px;
+  margin: 0.1px;
   background-color: white;
 }
 
