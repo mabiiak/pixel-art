@@ -63,6 +63,8 @@ Onde foi implementado uma página web que contém uma paleta de cores funcional 
 
 </details>
 
+## Requisitos
+
     ✅ 1 Adicione à página o título "Paleta de Cores".
 
     ✅ 2 Adicione à página uma paleta contendo quatro cores distintas.
